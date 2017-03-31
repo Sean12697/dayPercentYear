@@ -17,7 +17,7 @@ public class Percentage {
 				totalDays += Days[i];
 			}
 		}
-		float percent = (float)totalDays/365f;
+		float percent = ((float)totalDays/365f)*100;
 		System.out.println(percent + "%");
 	}
 }
