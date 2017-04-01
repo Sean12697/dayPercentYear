@@ -10,15 +10,20 @@ public class Percentage {
 		int month = now.get(Calendar.MONTH);
 		int year = now.get(Calendar.YEAR);
 		int totalDays = 0;
+		int maxDays = 365;
+		boolean leapYear = false;
+		if (((year % 400) != 0) && ((year % 4) == 0)) {
+			leapYear = true;
+			maxDays = 366;
+		}
 		for (int i = 0; i < month; i++) {
-			if (((year % 400) != 0) && ((year % 4) == 0) && month == 1) { //Leap Years
-				totalDays += Days[i] + 1;
-			} else {
 				totalDays += Days[i];
-			}
+				if (month == 1 && leapYear) { 
+					totalDays += 1;
+				} 
 		}
 		totalDays += day;
-		float percent = ((float)totalDays/365f)*100;
+		float percent = ((float)totalDays/(float)maxDays)*100;
 		System.out.println(percent + "%");
 	}
 }
